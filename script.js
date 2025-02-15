@@ -7,3 +7,23 @@
 
 \f0\fs24 \cf0 console.log("BookMind-AI est pr\'eat !");\
 }
+document.addEventListener("DOMContentLoaded", function () {
+    const books = {
+        fantasy: ["Le Seigneur des Anneaux", "Harry Potter", "L'Assassin Royal"],
+        sciencefiction: ["Dune", "Fondation", "Neuromancien"],
+        thriller: ["La Fille du Train", "Gone Girl", "Le Silence des Agneaux"],
+        romance: ["Orgueil et Préjugés", "Me Before You", "Outlander"]
+    };
+
+    document.getElementById("recommendButton").addEventListener("click", function () {
+        const genre = document.getElementById("genreInput").value.toLowerCase();
+        const result = document.getElementById("result");
+
+        if (books[genre]) {
+            const randomBook = books[genre][Math.floor(Math.random() * books[genre].length)];
+            result.textContent = `Nous vous recommandons : ${randomBook}`;
+        } else {
+            result.textContent = "Désolé, ce genre n'est pas disponible.";
+        }
+    });
+});
